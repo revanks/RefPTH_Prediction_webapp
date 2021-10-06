@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>RefPTH_Predict</title>
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ </head>
+
+	
+<body>
+<!-- ----------------- ----------------- Navbar start----------------------------------------->	
+
+		<div class="main"> 
+				<!-- <div class="logo"><img src="/logo.png"></div> -->
+				<div><a href="#" class="navbar-brand scroll-top logo  animated bounceInLeft"><b><i>RefPTH Prediction</i></b></a> </div>
+
+
+					<ul class=>
+     							<li><a class="nav-item nav-link" href="{{ url_for('Home') }}">Home</a></li>
+     							<li><a class="nav-item nav-link" href="{{ url_for('flowregime') }}">Predict Flow Regime</a></li>
+      					
+     						    <li><a class="nav-item nav-link" href="{{ url_for('bendpressure') }}">Predict Bend Pressure Drop</a></li>
+     						    <li><a class="nav-item nav-link" href="https://github.com/revanks">Github</a></li>
+      
+    				</ul>
+    	
+ 		</div>
+
+
+<!------------------------------ Navbar end---------------------------------------- -->
+<!-- ----------------- ----------------- Content & Form start----------------------------->		
+			
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-md-4 main-section">
+						<h5> 	<div class="a"> <h1><strong>RefPTH Prediction</strong></h1>RefPTH Prediction is AI based Real-Time<br>Refrigerant Pipe Thermo-Hydraulics Evaluation Tool <br><br>
+							<strong>Two-Phase Flow Regime Prediction in Horizontal Straight Pipe</strong></div>
+							</h5>
+
+							 	<h6><div class="b">Prediction of multiphase flow regimes is one of the challenging tasks for thermal engineers till today.<br>The Flow regime inside the circular horizontal pipe is made by a Machine learning classification-based model which can predict the below listed seven different flow regimes occurring inside the pipe.</div></h6>
+
+							 	 <h7>Stratified-Wavy<br></h7>
+								 <h7>Slug-Stratified-Wavy<br></h7>
+								 <h7>Slug<br></h7> 
+								 <h7>Intermittent<br></h7>
+								 <h7>Annular<br></h7>
+								 <h7>Dryout<br></h7>
+								 <h7>Misty<br></h7> 
+
+
+								<h6><div class="b"><br>Based on user inputs : Pipe diameter of circular cross section, Vapor Quality, Mass flux, and Saturation Temperature for the following Refriegerant fluids</div></h6>
+
+								 <h7>R134a<br></h7>
+								 <h7>R410a<br></h7>
+								 <h7>R22<br></h7>
+								
+					</div>
+
+
+<!------------------------------content ends--------------------------------------- -->		
+<!------------------------------form start----------------------------------- -------->						
+						
+					<div class="model-dialog text-center">
+					<div class="col-md-4 main-section">
+					<div clsss="model-content">	</div>  
+					<div class="panel panel-default" > <!-- --panel bacground- -->
+					
+					 <h2>Two-Phase Flow Regime Prediction <br>in a Horizontal Straight Pipe</h2>
+						 <div class="panel-body">
+							<form method="POST" action="{{ url_for('predict_1')}}">
+
+						<form class="col-md-4">
+						<div class="form-group">
+							<h3>Select Refrigerant Fluid</h3>
+								<select  type="Refrigerant" name="Refrigerant" class="form-control" required="required">
+								                <option value="R134a">R134a</option>
+								                <option value="R22">R22</option>
+								                <option value="R410a">R410a</option>
+								                
+					            </select>		
+			        	</div>
+								
+						<div class="form-group">
+						<h3>Pipe Daiameter (mm)</h3>
+						<input type="Pipe_Diameter" name="Pipe_Diameter" class="form-control" placeholder="Pipe Diameter, eg: 8.0" required="required">		 
+						 </div><!-- form-group-->
+								
+						<div class="form-group">
+						<h3>Inlet Pipe Temperature (degree celcius)</h3>
+						<input type="Inlet_Temperature" name="Inlet_Temperature" class="form-control" placeholder="Inlet Temperature, eg: 5.0" required="required">		 
+						 </div><!-- form-group-->
+
+
+						<div class="form-group">
+						<h3>Inlet Vapor Quality (between 0-1)</h3>
+						<input type="Vapour_Quality" name="Vapour_Quality" class="form-control" placeholder="Vapour Quality, eg: 0.4" required="required">		 
+						 </div><!-- form-group-->
+
+						<div class="form-group">
+						<h3>Inlet Mass Flux (Kg/m2s)</h3>
+						<input type="Mass_Flux" name="Mass_Flux" class="form-control" placeholder="Mass Flux, eg: 200.0" required="required"	</div><!-- form-group-->
+
+						<br>
+
+						<div class="form-group">
+						<input type="submit" name="" class="btn btn-success btn-lg btn-block"  value="Find Flow Regime">
+						</div><!-- form-group-->
+
+
+
+								</form> <!-- form Ends-->  
+							</form>
+
+							<br><h3>{{ prediction_text }}<h3>
+
+						</div>
+					</div>
+					</div>
+				</div>
+<!------------------------------------------------------------>
+<!------------------------------------------------------------>
+
+<!--/.page-section-->
+<section class="copyright">
+  <div class="container">
+    <div class="row">
+    	
+      <div class="col-sm-12 text-center"> © Copyright 2021 | Made by <strong>revanks</strong></div>
+    
+    </div>
+    <!-- / .row --> 
+  </div>
+</section>
+		
+<!------------------------------form ends------------------- -->
+
+		
+<!------------------------------form ends------------------- -->
+
+<style>
+	
+	
+
+			ul {
+			float: right;
+			list-style: none;
+			margin-right:100px; 
+			margin-top: 30px;
+
+			}
+			ul li{
+			display: inline-block;
+
+			}
+
+			ul li a{
+			text-decoration: none;
+			color: #fff;
+			padding:5px 20px;
+			border: 1px solid #fff;
+			transition: 0.6s ease;
+
+			}
+			ul li a: hover{
+				background-color: #ffffff;
+				color: #ffffff;
+			}
+
+			
+
+			body{
+				font-family: arial;
+				background-size: cover;
+				background: #159957;  /* fallback for old browsers  good green*/
+				background: -webkit-linear-gradient(to right, #155799, #159957);  /* Chrome 10-25, Safari 5.1-6 */
+				background: linear-gradient(to right, #155799, #159957); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+				}
+			
+
+
+
+			/*------------------------- Navbar end--& form start------------- */
+			.main-section{
+				margin-top: 40px;
+				margin-bottom: 150px;
+			}
+			.model-content{
+					 background-color: #e0e2e5;
+					 opacity: 3;
+					 padding: 50px;
+					 box-shadow: 10px 10px 10px #848484;
+
+			}
+			.btn{
+				background-color: #134E5E;
+				border-radius: 10px;
+				color: white;
+				border-color: #1cb9f2;
+				font-size: 18px;
+				box-shadow: 0px 0px 300px #848484;
+
+			}
+			.btn:hover, .btn:focus{
+				background-color: #1cb9f2!important;
+				border-bottom: 4px, solid #1cb9f2!important;
+			}
+
+			h1{
+				font-weight: 20px;
+				color: #ffffff;
+				font-family: arial;
+				margin-top: 0px;
+				padding-bottom: 0px;
+				font-size: 35px;
+				opacity: 1;
+
+			}
+
+			h2{
+				font-weight: 1px;
+				color: #050505;
+				font-family: sans-serif;
+				margin-top: 25px;
+				padding-bottom: 1px;
+				font-size: 20px;
+				opacity: 2;
+			}
+
+
+			h3{
+				font-weight: 20px;
+				color: #050505;
+				font-family: arial;
+				margin-top: 1px;
+				padding-bottom: 1px;
+				font-size: 15px;
+				opacity: 6;
+			}
+
+			h4{
+				font-weight: 1px;
+				color: #484b4f;
+				font-family: arial;
+				margin-top: 25px;
+				padding-bottom: 10px;
+				font-size: 20px;
+				opacity: 0.8;
+			}
+			h5{
+				font-weight: 5px;
+				color: #ffffff;
+				font-family: arial;
+				margin-top: 5px;
+				padding-bottom: 1px;
+				font-size: 25px;
+				opacity: 0.8;
+
+			}
+			h6{
+				font-weight: 100px;
+				color: #ffffff;
+				font-family: arial;
+				margin-top: 0px;
+				padding-bottom: 1px;
+				font-size: 16px;
+				opacity: 0.9;
+
+			}
+			h7{
+				font-weight: 100px;
+				color: #ffffff;
+				font-family: arial;
+				margin-top: 0px;
+				padding-bottom: 1px;
+				font-size: 20px;
+				opacity: 0.9;
+
+			}
+			 div.a {
+			 line-height: 1.2; }
+
+			 div.b {
+			 line-height: 1.4; }
+
+			div.c {
+				line-height: 2;
+				}
+
+			.form-group{
+				margin-bottom: 5px;
+				border-radius: 10px;
+			}
+			.form-group input{
+				height: 40px;
+				padding: auto;
+
+			}
+
+			.dropdown-menu{
+				background-color: #414156;
+				color: white;
+
+			}
+			.dropdown-content a:hover {
+				color: white;
+				margin: 0px;
+				padding: 0px;
+				opacity: .1;
+			}
+			.copyright {
+				
+				font-size: 15px;
+				padding: 80px 0;
+				font-weight: 1px;
+				color: #ffffff;
+				font-family: arial;
+				opacity: 20;
+				
+				}
+			/*----Nav ----*/
+			.header .navbar-brand {
+				float: left; 
+				line-height: 18px;
+				height: 50px;/*color:#D11027;*/
+			}
+			.navbar-brand b {
+				color: #D11027;
+				font-family: 'Oswald', sans-serif;
+				font-weight: 900;
+			}
+			.navbar-brand b i {
+				font-size: 30px;
+				color: #fff;
+				font-style: normal;
+				opacity: 0.8;
+
+			}
+
+
+	
+
+		</style>>
+
+		</body>
+</html>
+
+
